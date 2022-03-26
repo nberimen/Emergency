@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class UserResponseModel {
-    Long id;
-    String mail;
+    private Long id;
+    private String mail;
 }
