@@ -6,9 +6,9 @@ import vodafone.hackathon.emergency.model.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-    boolean existsByUsername(String username);
+    boolean existsByMail(String mail);
 
-    User findByUsername(String username);
+    User findByMail(String mail);
 
     User getUserById(long id);
 }

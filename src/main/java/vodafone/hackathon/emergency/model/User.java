@@ -6,7 +6,9 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.List;
 
 @Entity
 @Getter
@@ -15,8 +17,9 @@ import javax.persistence.Table;
 @ToString
 @RequiredArgsConstructor
 public class User extends BaseModel {
-    String name;
-    String surname;
-    String username;
-    String password;
+    private String mail;
+    private String password;
+    @OneToMany
+    @ToString.Exclude
+    private List<MailsToSendMessage> mailsToSendMessage;
 }

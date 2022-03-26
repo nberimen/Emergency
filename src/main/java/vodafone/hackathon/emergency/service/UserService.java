@@ -25,7 +25,7 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
 
     public boolean createUser(CreateUserRequestModel requestModel) {
-        if (userRepository.existsByUsername(requestModel.getUsername()))
+        if (userRepository.existsByMail(requestModel.getMail()))
             throw new ResponseStatusException(HttpStatus.CONFLICT, "User already exists.");
         User user = mapper.map(requestModel, User.class);
         user.setPassword(passwordEncoder.encode(requestModel.getPassword()));
