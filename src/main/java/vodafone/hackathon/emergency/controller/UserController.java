@@ -12,32 +12,33 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/users")
 public class UserController {
 
     private final UserService userService;
 
-    @GetMapping("/user/id/{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<ApiResponse<UserResponseModel>> findUserById(@PathVariable int id) {
         return ResponseEntity.ok(ApiResponse.of(
                 userService.findUserById(id)
         ));
     }
 
-    @GetMapping("/users")
+    @GetMapping
     public ResponseEntity<ApiResponse<List<UserResponseModel>>> findUsers() {
         return ResponseEntity.ok(ApiResponse.of(
                 userService.findUsers()
         ));
     }
 
-    @PutMapping("/user")
+    @PutMapping
     public ResponseEntity<ApiResponse<Boolean>> updateUser(@RequestBody UpdateUserRequestModel requestModel) {
         return ResponseEntity.ok(ApiResponse.of(
                 userService.updateUser(requestModel)
         ));
     }
 
-    @DeleteMapping("/user/id/{id}")
+    @DeleteMapping("/id/{id}")
     public ResponseEntity<ApiResponse<Boolean>> deleteUser(@PathVariable long id) {
         return ResponseEntity.ok(ApiResponse.of(
                 userService.deleteUser(id)

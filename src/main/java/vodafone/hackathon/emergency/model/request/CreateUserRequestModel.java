@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class CreateUserRequestModel {
-    String mail;
-    String password;
+    private String mail;
+    private String password;
 }

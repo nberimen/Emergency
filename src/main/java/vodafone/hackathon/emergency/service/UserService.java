@@ -28,7 +28,8 @@ public class UserService {
         if (userRepository.existsByMail(requestModel.getMail()))
             throw new ResponseStatusException(HttpStatus.CONFLICT, "User already exists.");
         User user = mapper.map(requestModel, User.class);
-        user.setPassword(passwordEncoder.encode(requestModel.getPassword()));
+        if (requestModel.getPassword() != null)
+            user.setPassword(passwordEncoder.encode(requestModel.getPassword()));
         userRepository.save(user);
         return true;
     }
